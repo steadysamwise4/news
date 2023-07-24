@@ -67,6 +67,11 @@ class NewsDbProvider implements Source, Cache {
     return db.insert("Items", item!.toMap(),
         conflictAlgorithm: ConflictAlgorithm.ignore);
   }
+
+  @override
+  Future<int> clear() {
+    return db.delete("items");
+  }
 }
 
 final newsDbProvider = NewsDbProvider();
